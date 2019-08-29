@@ -2,20 +2,16 @@ package com.luv2code.springboot.demo.mycoolapp.rest;
 
 import com.luv2code.springboot.demo.mycoolapp.entity.Employee;
 import com.luv2code.springboot.demo.mycoolapp.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("employees")
+@RequiredArgsConstructor
 public class EmployeeController {
 
-
-    private EmployeeService employeeService;
-
-    @Autowired
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+    @NonNull private final EmployeeService employeeService;
 
     @GetMapping("/listAll")
     public Iterable<Employee> listEmployees() {
