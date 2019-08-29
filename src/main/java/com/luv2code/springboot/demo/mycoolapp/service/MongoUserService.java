@@ -2,7 +2,6 @@ package com.luv2code.springboot.demo.mycoolapp.service;
 
 import com.luv2code.springboot.demo.mycoolapp.dao.UsersRepository;
 import com.luv2code.springboot.demo.mycoolapp.entity.User;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,7 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MongoUserService implements UserDetailsService {
 
-    @NonNull private UsersRepository usersRepository;
+    private final UsersRepository usersRepository;
 
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {

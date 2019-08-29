@@ -2,7 +2,6 @@ package com.luv2code.springboot.demo.mycoolapp.rest;
 
 import com.luv2code.springboot.demo.mycoolapp.entity.Employee;
 import com.luv2code.springboot.demo.mycoolapp.service.EmployeeService;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,8 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("employees")
 @RequiredArgsConstructor
 public class EmployeeController {
-
-    @NonNull private final EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     @GetMapping("/listAll")
     public Iterable<Employee> listEmployees() {

@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import com.luv2code.springboot.demo.mycoolapp.exception.BadRequestException;
 import com.luv2code.springboot.demo.mycoolapp.exception.NotFoundException;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ import com.luv2code.springboot.demo.mycoolapp.entity.Employee;
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @NonNull private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     @Override
     public Iterable<Employee> findAll() {
