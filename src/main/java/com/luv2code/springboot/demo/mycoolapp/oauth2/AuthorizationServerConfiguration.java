@@ -20,6 +20,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     MongoUserService userService;
 
     private AuthenticationManager authenticationManager;
+
     // AuthenticationManager is required for the password grant type in Spring Security OAuth2
     public AuthorizationServerConfiguration(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
@@ -43,8 +44,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .accessTokenValiditySeconds(600)
                 .refreshTokenValiditySeconds(600)
                 .scopes("global")
-                .authorizedGrantTypes("password", "refresh_token")
-                .autoApprove(true);
+                .authorizedGrantTypes("password", "refresh_token");
     }
-
 }
