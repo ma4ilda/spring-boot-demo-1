@@ -28,8 +28,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()
                 .httpBasic().and()
                 .authorizeRequests()
-                .antMatchers("/error").permitAll() //authorize every request except error page 'Unauthorized'
-                .anyRequest().authenticated()
-        ;
+                .antMatchers("/error", "/actuator/**").permitAll() //authorize every request except error page 'Unauthorized'
+                .anyRequest().authenticated();
     }
 }

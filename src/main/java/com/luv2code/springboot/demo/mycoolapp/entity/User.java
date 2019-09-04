@@ -1,5 +1,6 @@
 package com.luv2code.springboot.demo.mycoolapp.entity;
 
+import lombok.Data;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,10 +8,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
+@Data
 @Document(collection = "users")
 public class User implements UserDetails {
     private static final long serialVersionUID = 1L;
@@ -21,19 +22,13 @@ public class User implements UserDetails {
     private String password;
     private boolean enabled;
 
+    private String resetToken;
+
     public User(ObjectId id, String username, String password, boolean enabled) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.enabled = enabled;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
 
@@ -42,18 +37,12 @@ public class User implements UserDetails {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     @Override
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     private boolean getEnabled() {
         return enabled;
@@ -62,10 +51,6 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return getEnabled();
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
     }
 
     @Override
