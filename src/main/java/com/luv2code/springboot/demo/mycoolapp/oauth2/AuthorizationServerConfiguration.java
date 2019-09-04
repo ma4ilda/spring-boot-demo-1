@@ -26,7 +26,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     }
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
 
         endpoints.authenticationManager(authenticationManager)
                 .userDetailsService(userService);
@@ -41,6 +41,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .withClient("appgrid")
                 .secret(encoder.encode("appgrid_secret"))
                 .accessTokenValiditySeconds(600)
+                .refreshTokenValiditySeconds(600)
                 .scopes("global")
                 .authorizedGrantTypes("password", "refresh_token")
                 .autoApprove(true);
